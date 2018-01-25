@@ -60,17 +60,17 @@ public List<WebElement> tcells;
 	}
 	
 	public void compareProduct() {
-		List<ModelDetails> pojo = new ArrayList<ModelDetails>();
+		List<ModelDetails> modelList = new ArrayList<ModelDetails>();
 		trows= table.findElements(By.tagName("tr"));
 		tcells= trows.get(11).findElements(By.tagName("td"));
 		String maxStorageSpace=tcells.get(0).getText();
 		modelDetails = new ModelDetails(driver.findElement(By.xpath(getLocator(0))).getText(),trows.get(4).findElements(By.tagName("td")).get(0).getText());
-		pojo.add(modelDetails);
+		modelList.add(modelDetails);
 		for(int i= 1;i<tcells.size();i++) {
 			int diff = tcells.get(i).getText().compareTo(maxStorageSpace);
 			if(diff==0) {
 				 modelDetails1 = new ModelDetails(driver.findElement(By.xpath(getLocator(i))).getText(),trows.get(4).findElements(By.tagName("td")).get(i).getText());
-				pojo.add(modelDetails1);
+				modelList.add(modelDetails1);
 				if(modelDetails.getName().contains("iPhone")) {
 					maxStorageSpace=tcells.get(i-1).getText();
 					cellNumber=i-1;
@@ -80,9 +80,9 @@ public List<WebElement> tcells;
 				}
 			}
 			else if(diff>0) {
-				pojo.clear();
+				modelList.clear();
 				modelDetails2 = new ModelDetails(driver.findElement(By.xpath(getLocator(i))).getText(),trows.get(4).findElements(By.tagName("td")).get(i).getText());
-				pojo.add(modelDetails2);
+				modelList.add(modelDetails2);
 				maxStorageSpace=tcells.get(i).getText();
 				cellNumber=i;
 			}
