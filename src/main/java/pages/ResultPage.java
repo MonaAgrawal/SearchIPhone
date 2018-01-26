@@ -66,7 +66,7 @@ public List<WebElement> tcells;
 		String maxStorageSpace=tcells.get(0).getText();
 		modelDetails = new ModelDetails(driver.findElement(By.xpath(getLocator(0))).getText(),trows.get(4).findElements(By.tagName("td")).get(0).getText());
 		modelList.add(modelDetails);
-		for(int i= 1;i<tcells.size();i++) {
+		for(int i= 0;i<tcells.size();i++) {
 			int diff = tcells.get(i).getText().compareTo(maxStorageSpace);
 			if(diff==0) {
 				 modelDetails1 = new ModelDetails(driver.findElement(By.xpath(getLocator(i))).getText(),trows.get(4).findElements(By.tagName("td")).get(i).getText());
