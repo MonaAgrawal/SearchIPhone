@@ -101,7 +101,7 @@ public List<WebElement> tcells;
 	public String getLocator(int col) {
 		switch (col) {
 		case 0:
-			return "//div[@id='comparison_title']/span";
+			return "//div[@id='comparison_title']/span[2]";
 		case 1:
 			return "//div[@id='comparison_title0']/span";
 		case 2:
